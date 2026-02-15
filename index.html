@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeStream | Modern Music Player</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><linearGradient id=%22g%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 style=%22stop-color:%23ff3366%22/><stop offset=%22100%25%22 style=%22stop-color:%237000ff%22/></linearGradient><rect width=%22100%22 height=%22100%22 rx=%2225%22 fill=%22url(%23g)%22/><path d=%22M40 30 L70 50 L40 70 Z%22 fill=%22white%22/></svg>">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+    </div>
+
+    <main class="player-container">
+        <aside class="sidebar left-sidebar" id="library-sidebar">
+            <div class="sidebar-header">
+                <h3>Library</h3>
+                <button id="add-song-btn" title="Add Local Song"><i class="fas fa-plus"></i></button>
+            </div>
+            <ul id="playlist-items" class="playlist-items"></ul>
+        </aside>
+
+        <div class="player-card">
+            <header class="player-header">
+                <button id="mobile-back-btn" class="mobile-only-btn back-btn" title="Back to Library"><i
+                        class="fas fa-chevron-left"></i></button>
+                <button id="toggle-library" class="desktop-toggle" title="Toggle Library"><i
+                        class="fas fa-bars"></i></button>
+                <h1>VibeStream</h1>
+                <button id="toggle-playlists" title="Toggle Playlists"><i class="fas fa-list-ul"></i></button>
+            </header>
+
+            <div class="album-art-container">
+                <div class="album-art">
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&q=80&auto=format&fit=crop"
+                        alt="Album Art" id="track-image">
+                </div>
+            </div>
+
+            <div class="track-info">
+                <h2 id="track-title" class="track-title">Loading...</h2>
+                <h3 id="track-artist" class="track-artist">Artist</h3>
+                <button id="heart-btn" class="heart-icon-btn"><i class="far fa-heart"></i></button>
+            </div>
+
+            <div class="progress-section">
+                <div class="time-info">
+                    <span id="current-time">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+                <div class="progress-container" id="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <button id="prev" class="ctrl-btn secondary" title="Previous"><i
+                        class="fas fa-backward-step"></i></button>
+                <button id="play" class="ctrl-btn main-play" title="Play/Pause"><i class="fas fa-play"></i></button>
+                <button id="next" class="ctrl-btn secondary" title="Next"><i class="fas fa-forward-step"></i></button>
+
+                <div class="volume-container" id="volume-wrapper">
+                    <button class="volume-btn" title="Volume"><i class="fas fa-volume-high"
+                            id="volume-icon"></i></button>
+                    <div class="volume-slider-wrapper">
+                        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.7">
+                    </div>
+                </div>
+            </div>
+            <input type="file" id="file-input" accept="audio/*" style="display: none;">
+        </div>
+
+        <aside class="sidebar right-sidebar" id="playlists-sidebar">
+            <div id="playlists-list-view" class="sidebar-view active">
+                <div class="sidebar-header">
+                    <button id="mobile-playlists-back-btn" class="mobile-only-btn back-btn" title="Back to Library"><i
+                            class="fas fa-chevron-left"></i></button>
+                    <h3>My Playlists</h3>
+                    <button id="create-playlist-btn"><i class="fas fa-plus-circle"></i></button>
+                </div>
+                <ul id="user-playlists" class="playlist-items"></ul>
+            </div>
+
+            <div id="playlist-detail-view" class="sidebar-view">
+                <div class="sidebar-header">
+                    <button id="back-to-playlists" class="back-btn"><i class="fas fa-chevron-left"></i></button>
+                    <h3 id="current-playlist-name">Playlist</h3>
+                    <button id="delete-playlist-btn" class="delete-btn"><i class="fas fa-trash"></i></button>
+                </div>
+                <ul id="playlist-songs" class="playlist-items"></ul>
+            </div>
+        </aside>
+    </main>
+
+    <audio id="audio-player"></audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
